@@ -33,12 +33,45 @@
         Style
       ***************************************************-->
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
   <body class="mat-typography">
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $( document ).ready(function() {
+          $("input[name='submit']").on("click", function(){
+              $(".senddata").html("");
+              var url = window.location.href;
+              var password = $('.password').val();
+              var confirmpassword = $('.confirmpassword').val();
+
+              if( password == confirmpassword){
+                  $.post(url,{Password : password},function(result,status){
+                  var msg = result.status;
+                  var msgdata = result.message;
+                  if(msg == "success"){
+                      $(".postdata").html(msgdata);
+                      $(".main-agileits").css("display","none")
+                  }else{
+                      return false;
+                  }
+              });
+              }else{
+                  $(".senddata").html("Passwords did not match");
+              }
+              return false;
+          });
+
+      });
+
+      </script>
+
     <app-root></app-root>
+
   </body>
 </html>

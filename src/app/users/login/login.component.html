@@ -25,7 +25,7 @@
         <div
           class="alert alert-danger"
           role="alert"
-          *ngIf="f.submitted && username.invalid"
+          *ngIf="username.errors && f.submitted"
         >
           Username is required!
         </div>
@@ -44,7 +44,7 @@
         <div
           class="alert alert-danger"
           role="alert"
-          *ngIf="f.submitted && password.invalid"
+          *ngIf="password.errors && f.submitted"
         >
           <div *ngIf="password.errors.required">Password is required</div>
           <div *ngIf="password.errors.minlength">

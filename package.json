@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.0.0",
+    "@angular/animations": "^10.0.14",
     "@angular/cdk": "^10.2.7",
     "@angular/common": "~10.0.0",
     "@angular/compiler": "~10.0.0",
@@ -21,7 +21,9 @@
     "@angular/platform-browser": "~10.0.0",
     "@angular/platform-browser-dynamic": "~10.0.0",
     "@angular/router": "~10.0.0",
+    "bootstrap": "^5.0.1",
     "ngx-material-file-input": "^2.1.1",
+    "ngx-toastr": "^14.0.0",
     "node-modules": "^1.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
