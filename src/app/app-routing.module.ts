@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AddproductComponent } from "./products/addproduct/addproduct.component";
 import { ListproductComponent } from "./products/listproduct/listproduct.component";
 const routes: Routes = [
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'addproduct', component: AddproductComponent },
   { path: 'listproduct', component:ListproductComponent  },
-  { path: 'reset', component: ResetpasswordComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

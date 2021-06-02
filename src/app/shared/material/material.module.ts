@@ -33,6 +33,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const materials=[
   MatAutocompleteModule,
@@ -66,7 +68,7 @@ const materials=[
   MatStepperModule,
   MatTableModule,
   MatTabsModule,
-  MatTooltipModule
+  MatTooltipModule,
 ];
 
 @NgModule({
@@ -75,7 +77,11 @@ const materials=[
     CommonModule,
     materials,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatNativeDateModule
+
+
   ],
   exports:[
     materials,

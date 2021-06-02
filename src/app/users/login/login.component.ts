@@ -7,7 +7,7 @@ import { User } from '../../_models/user.model';
 import { UserService } from '../../_services/auth/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TokenStorageService } from 'src/app/_services/auth/token-storage.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,45 +15,56 @@ import { TokenStorageService } from 'src/app/_services/auth/token-storage.servic
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form: any = {
-    username: null,
-    password: null
-  };
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
 
-  constructor(private authService: AuthenticationService, private tokenStorage: TokenStorageService) { }
+  loginForm: FormGroup;
+  private subscription: Subscription;
+  errorMessage;
+  successMessage;
 
-  ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
-    }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthenticationService,
+    ) { }
+
+    ngOnInit() {
+      this.loginForm = this.formBuilder.group({
+
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+
+    });
   }
 
-  onSubmit(): void {
-    const { username, password } = this.form;
 
-    this.authService.login(username, password).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUser(data);
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+  onSubmit(): void{
+
+
+  this.subscription=this.authService.login(this.loginForm.value.email,this.loginForm.value.password).subscribe({
+      next: (response) => {
+        this.errorMessage = null;
+      this.successMessage = '';
+      setTimeout(()=>{
+        this.successMessage = null;
+        this.router.navigate(['/home']);
+      },2000);
+
+
       },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    );
-  }
+      error:(error)=>{
+        this.errorMessage = error;
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 3000);
+      console.log(error);
+      },
+      complete:console.log
 
-  reloadPage(): void {
-    window.location.reload();
+    });
+
+
+
   }
 }

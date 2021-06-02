@@ -12,7 +12,7 @@ import { UserService } from '../../_services/auth/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  hide = true;
   registerForm: FormGroup;
   private subscription: Subscription;
   errorMessage;
@@ -67,7 +67,5 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+
 }

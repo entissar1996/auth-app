@@ -1,13 +1,11 @@
 import { ActivatedRoute, Router } from '@angular/router';
-//import { IProduct } from '../../_models/products.model';
 import { Component, NgZone, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct } from 'src/app/_models/products.model';
-
-
+import { ProductService } from "./../../_services/product/product.service";
 
 @Component({
   selector: 'app-addproduct',
@@ -15,38 +13,62 @@ import { IProduct } from 'src/app/_models/products.model';
   styleUrls: ['./addproduct.component.css']
 })
 export class AddproductComponent implements OnInit {
-  tutorial: IProduct = {
+  product: IProduct = {
     label: '',
     description: '',
     price: null,
-    brand:'',
     categorie:'',
+    brand:'',
     photo:'',
     quantity:null,
   };
 
-  bookForm: FormGroup;
+  ProductForm: FormGroup;
+  private subscription: Subscription;
+  errorMessage;
+  successMessage;
 
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
-    private ngZone: NgZone,
+    private productService: ProductService
   ) {
-    this.bookForm = this.formBuilder.group({
-      label:[''] ,
-    description: [''],
-    price: null,
-    brand:[''],
-    categorie:[''],
-    photo:[''],
-    quantity:null,
+    this.ProductForm = this.formBuilder.group({
+    label:['', Validators.required],
+    description: ['', Validators.required],
+    price: [null, Validators.required],
+    quantity:[null, Validators.required],
     })
   }
 
   ngOnInit() { }
 
-  onSubmit(): any {
+
+  onSubmit(): void{
+    this.subscription=this.productService.postProduct(this.ProductForm.value).subscribe({
+      next: (response) => {
+        this.errorMessage = null;
+      this.successMessage = '';
+      setTimeout(()=>{
+        this.successMessage = null;
+        this.router.navigate(['/home']);
+      },2000);
+
+
+      },
+      error:(error)=>{
+        this.errorMessage = error;
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 3000);
+      console.log(error);
+      },
+      complete:console.log
+
+    });
+
 
 
   }
+
 }

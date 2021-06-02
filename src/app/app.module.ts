@@ -18,7 +18,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { SliderComponent } from './slider/slider.component';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import {ProductsModule} from "./products/products.module";
 import { AdminModule } from "./admin/admin.module";
 import { UsersModule } from "./users/users.module";
@@ -34,7 +33,6 @@ import { CommonModule } from '@angular/common';
     BoardAdminComponent,
     BoardUserComponent,
     SliderComponent,
-    ResetpasswordComponent,
   ],
   imports: [
     BrowserModule,

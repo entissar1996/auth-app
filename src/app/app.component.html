@@ -1,39 +1,39 @@
-<div id="app">
-  <nav class="navbar navbar-expand navbar-black bg-white">
-    <a href="#" class="navbar-brand">Opticat</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
-      </li>
-
-    </ul>
-
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="container">
-    <router-outlet></router-outlet>
-    
-  </div>
+<mat-toolbar color="primary" class="white">
+    <mat-toolbar-row>
+      <a routerLink="home">Opticat</a>
+      <span class="spacer"></span>
 
 
-</div>
 
+      <span class="spacer"></span>
 
+        <mat-icon class="shopping-icon"><a routerLink="">add_shopping_cart</a></mat-icon>
+
+        <a  mat-button  [matMenuTriggerFor]="aboveMenu"><mat-icon mat-icon class="person-icon">person</mat-icon></a>
+
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+            <button mat-menu-item ><a routerLink="login">Connexion</a></button>
+            <button mat-menu-item><a routerLink="register">S'inscrire</a></button>
+          </mat-menu>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row >
+      <div class="nav2">
+      <a mat-button  routerLink="">marque</a>
+
+      <a mat-button  [matMenuTriggerFor]="belowMenu">Lunettes</a>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item ><a routerLink="">Lunettes de soleil</a></button>
+        <button mat-menu-item><a routerLink="">Lunettes de vue</a></button>
+      </mat-menu>
+      <a mat-button routerLink="">Lentilles</a>
+
+      <a mat-button routerLink="">Offres</a>
+
+      <a mat-button routerLink="">Nouveauté</a>
+    </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<router-outlet></router-outlet>
 

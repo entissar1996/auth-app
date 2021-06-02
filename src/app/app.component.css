@@ -1,0 +1,18 @@
+.spacer{
+  flex : 1 1 auto;
+}
+a {
+  text-decoration: none;
+  color:black;
+}
+.menu-list{
+  margin: left 3px ;
+}
+.nav2{
+  float: none;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.white{
+background-color: #e7e2e1;}
