@@ -20,7 +20,7 @@ import { AddproductsComponent } from "./admin/addproducts/addproducts.component"
 import { SidebarComponent } from "./admin/sidebar/sidebar.component";
 import { UpdatephotoComponent } from './admin/updatephoto/updatephoto.component';
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
