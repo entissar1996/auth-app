@@ -31,6 +31,6 @@ export class ProductService {
   }
 
   getProductById(id){
-    return this.httpClient.get(`${environment.baseUri}/products${id}`) as Observable<IApiResponse>;
+    return this.httpClient.get(`${environment.baseUri}/products${id}`) as Observable<any>;
   }
 }

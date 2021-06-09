@@ -1,0 +1,64 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+<div class="register pt-80 pb-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="title  mb-30 pb-25">Ajout un produit</h3>
+        <div class="log-in-form">
+
+          <form [formGroup]="ProductForm" class="personal-information" >
+            <div class="alert alert-danger text-center" role="alert" *ngIf="errorMessage">error</div>
+            <div class="alert alert-success text-center" role="alert" *ngIf="successMessage">add product</div>
+ <mat-card>
+              <div class="form-group row">
+                <label for="nom" class="col-md-3 col-form-label">Product Label</label>
+                <div class="col-md-6">
+                  <input type="text" formControlName="label" class="form-control">
+                </div>
+              </div>
+</mat-card>
+<mat-card>
+
+              <div class="form-group row">
+                <label for="nom" class="col-md-3 col-form-label">Description</label>
+                <div class="col-md-6">
+                  <input type="text "  formControlName="description" class="form-control">
+                </div>
+              </div>
+</mat-card>
+<mat-card>
+              <div class="form-group row">
+                <label for="nom" class="col-md-3 col-form-label">Price</label>
+                <div class="col-md-6">
+                  <input type="number"  formControlName="price" class="form-control">
+                </div>
+              </div>
+</mat-card>
+<mat-card>
+              <div class="form-group row">
+                <label for="nom" class="col-md-3 col-form-label">Quantity</label>
+                <div class="col-md-6">
+                  <input type="number"  formControlName="quantity" class="form-control">
+                </div>
+              </div>
+</mat-card>
+<mat-card>
+              <div class="form-group row pb-3 text-center">
+                <div class="col-md-6 offset-md-3">
+                  <div class="login-form-links">
+                    <div class="sign-btn">
+                      <button (click)="onSubmit()" class="btn theme-btn--dark1 btn--md" >add product</button>
+                    </div>
+                  </div>
+                </div>
+              </div></mat-card>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

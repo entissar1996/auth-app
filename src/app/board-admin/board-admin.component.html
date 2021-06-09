@@ -1,19 +1,27 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Angular 11 CRUD Operations Demo</a>
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+  <div>Student Records</div>
+  <span class="nav-tool-items">
+    <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+  </span>
+</mat-toolbar>
 
-  <div id="navbarNav" class="collapse navbar-collapse">
-    <ul class="navbar-nav ml-auto ">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="listproduct">List de produit</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="addproduct">Add Product</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    [fixedTopGap]>
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="/addproduct">
+        <mat-icon>add</mat-icon> Add Student
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/listproduct">
+        <mat-icon>format_list_bulleted</mat-icon> View Students
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

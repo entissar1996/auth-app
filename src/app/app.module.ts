@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './shared/material/home/home.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -19,13 +18,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { SliderComponent } from './slider/slider.component';
 import {ProductsModule} from "./products/products.module";
-import { AdminModule } from "./admin/admin.module";
 import { UsersModule } from "./users/users.module";
-import { MaterialModule } from './shared/material/material.module';
+//import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { TestComponent } from './test/test.component';
+import { AngularMaterialModule } from './material.module';
+import { AdminModule } from './admin/admin.module';
+import { MenuComponent } from "./menu/menu.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,9 @@ import { CommonModule } from '@angular/common';
     BoardAdminComponent,
     BoardUserComponent,
     SliderComponent,
+    TestComponent,
+    MenuComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -48,16 +52,19 @@ import { CommonModule } from '@angular/common';
     MaterialFileInputModule,
     BrowserAnimationsModule,
     ProductsModule,
-    AdminModule,
     UsersModule,
-    MaterialModule,
+    AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+
+    AdminModule
 
    ],
   providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }

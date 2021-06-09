@@ -10,7 +10,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -35,6 +35,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { AngularMaterialModule } from 'src/app/material.module';
+
 
 const materials=[
   MatAutocompleteModule,
@@ -72,14 +75,17 @@ const materials=[
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     materials,
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatDividerModule,
+    MatNativeDateModule,
+    AngularMaterialModule
 
 
   ],
@@ -89,7 +95,7 @@ const materials=[
     FormsModule
   ],
   providers:[
-   // { provide: MAT_DIALOG_DATA, useValue: 'dialogData'}
+   { provide: MAT_DIALOG_DATA, useValue: 'dialogData'}
   ]
 })
 export class MaterialModule {

@@ -50,8 +50,7 @@ export class AddproductComponent implements OnInit {
         this.errorMessage = null;
       this.successMessage = '';
       setTimeout(()=>{
-        this.successMessage = null;
-        this.router.navigate(['/home']);
+        this.successMessage = 'successs';
       },2000);
 
 

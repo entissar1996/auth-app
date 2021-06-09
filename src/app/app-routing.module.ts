@@ -2,26 +2,53 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './users/register/register.component';
 import { LoginComponent } from './users/login/login.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './shared/material/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { AddproductComponent } from "./products/addproduct/addproduct.component";
-import { ListproductComponent } from "./products/listproduct/listproduct.component";
+import { ListproductsComponent } from "./admin/listproducts/listproducts.component";
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { TestComponent } from './test/test.component';
+import { AddproductsComponent } from "./admin/addproducts/addproducts.component";
+import { SidebarComponent } from "./admin/sidebar/sidebar.component";
+import { UpdatephotoComponent } from './admin/updatephoto/updatephoto.component';
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
-  { path: 'admin', component: BoardAdminComponent },
-  { path: 'addproduct', component: AddproductComponent },
-  { path: 'listproduct', component:ListproductComponent  },
+  { path: 'test', component: TestComponent },
+  { path: 'admin', component: SidebarComponent },
+  { path: 'addproduct', component: AddproductsComponent },
+  { path: 'listproduct', component:ListproductsComponent  },
+  { path: 'test', component:TestComponent  },
+  { path: 'photo', component:UpdatephotoComponent  },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule],
+  exports: [RouterModule,MatButtonModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule]
 })
 export class AppRoutingModule { }
