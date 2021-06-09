@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { IProduct } from 'src/app/_models/products.model';
 import { ProductService } from 'src/app/_services/product/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-listproducts',
@@ -14,7 +15,10 @@ export class ListproductsComponent implements OnInit {
   StudentData: any = [];
   dataSource: MatTableDataSource<IProduct>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['label', 'description', 'price', 'quantity'];
+  displayedColumns: string[] = [
+    'label', 'brand',
+    'price', 'quantity',"price_promo",
+    'photo','actions'];
 
   constructor(private studentApi: ProductService) {
     this.studentApi.getAllProducts().subscribe(data => {
@@ -37,5 +41,9 @@ export class ListproductsComponent implements OnInit {
       this.dataSource.data = data;
       this.studentApi.deleteProduct(e._id).subscribe()
     }
+  }
+
+  getUrl(url){
+          return `${environment.baseUri}/uploads/${url}`;
   }
 }

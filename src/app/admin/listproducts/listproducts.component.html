@@ -7,32 +7,42 @@
     <mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="label">
         <th mat-header-cell *matHeaderCellDef> Label </th>
-        <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.label}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.desciption}} </td>
-      </ng-container>
-    <!--  <ng-container matColumnDef="brand">
+      <ng-container matColumnDef="brand">
         <th mat-header-cell *matHeaderCellDef> Brand </th>
-        <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.brand}} </td>
       </ng-container>
-      <ng-container matColumnDef="categories">
-        <th mat-header-cell *matHeaderCellDef> Categories </th>
-        <td mat-cell *matCellDef="let element"> {{element.categories}} </td>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element?.price}} </td>
       </ng-container>
--->
-     <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> Price</th>
-        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> Quantité</th>
-        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        <th mat-header-cell *matHeaderCellDef> Qyantity </th>
+        <td mat-cell *matCellDef="let element"> {{element?.quantity}} </td>
       </ng-container>
 
+     <ng-container matColumnDef="price_promo">
+        <th mat-header-cell *matHeaderCellDef> Promotianal Price</th>
+        <td mat-cell *matCellDef="let element"> {{element?.pricepromo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="photo">
+        <th mat-header-cell *matHeaderCellDef> Photo</th>
+        <td mat-cell *matCellDef="let element">
+           <img [src]="getUrl(element?.photo)" alt="photo" class="photo">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary">Upload Photo</button>
+          <button  mat-button color="accent">Update Product</button>
+          <button  mat-button color="warn">Delete</button>
+        </td>
+      </ng-container>
 
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
