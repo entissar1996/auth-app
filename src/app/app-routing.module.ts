@@ -19,6 +19,9 @@ import { TestComponent } from './test/test.component';
 import { AddproductsComponent } from "./admin/addproducts/addproducts.component";
 import { SidebarComponent } from "./admin/sidebar/sidebar.component";
 import { UpdatephotoComponent } from './admin/updatephoto/updatephoto.component';
+import { UploaderComponent } from './admin/uploader/uploader.component';
+import { WidgetsComponent } from './admin/widgets/widgets.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -30,7 +33,9 @@ const routes: Routes = [
   { path: 'addproduct', component: AddproductsComponent },
   { path: 'listproduct', component:ListproductsComponent  },
   { path: 'test', component:TestComponent  },
-  { path: 'photo', component:UpdatephotoComponent  },
+  { path: 'upload', component:UploaderComponent  },
+  { path: 'dashbord', component:WidgetsComponent  },
+
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -12,6 +12,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import {MatSelectModule} from '@angular/material/select';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UpdatephotoComponent } from './updatephoto/updatephoto.component';
+import { UploaderComponent } from './uploader/uploader.component';
+import { WidgetsComponent } from './widgets/widgets.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { UpdatephotoComponent } from './updatephoto/updatephoto.component';
     SearchproductComponent,
     SidebarComponent,
     UpdatephotoComponent,
+    UploaderComponent,
+    WidgetsComponent,
   ],
   imports: [
     CommonModule,
