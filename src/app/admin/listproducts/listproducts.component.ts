@@ -12,7 +12,7 @@ import { UploaderComponent } from '../uploader/uploader.component';
 @Component({
   selector: 'app-listproducts',
   templateUrl: './listproducts.component.html',
-  styleUrls: ['./listproducts.component.css']
+  styleUrls: ['./listproducts.component.scss']
 })
 export class ListproductsComponent implements OnInit {
 

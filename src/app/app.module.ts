@@ -17,16 +17,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { SliderComponent } from './slider/slider.component';
-import {ProductsModule} from "./products/products.module";
 import { UsersModule } from "./users/users.module";
 //import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TestComponent } from './test/test.component';
 import { AngularMaterialModule } from './material.module';
 import { AdminModule } from './admin/admin.module';
 import { MenuComponent } from "./menu/menu.component";
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +33,6 @@ import { MenuComponent } from "./menu/menu.component";
     BoardAdminComponent,
     BoardUserComponent,
     SliderComponent,
-    TestComponent,
     MenuComponent,
 
   ],
@@ -51,13 +49,13 @@ import { MenuComponent } from "./menu/menu.component";
     MatFormFieldModule,
     MaterialFileInputModule,
     BrowserAnimationsModule,
-    ProductsModule,
     UsersModule,
     AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
     CommonModule,
+    MatMenuModule,
 
     AdminModule
 

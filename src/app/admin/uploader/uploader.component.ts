@@ -8,7 +8,7 @@ import {UploadService} from "../upload.service";
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
-  styleUrls: ['./uploader.component.css']
+  styleUrls: ['./uploader.component.scss']
 })
 export class UploaderComponent implements OnInit {
   @ViewChild('file', { static: false }) file;

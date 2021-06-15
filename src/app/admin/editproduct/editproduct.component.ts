@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/_services/product/product.service';
 @Component({
   selector: 'app-editproduct',
   templateUrl: './editproduct.component.html',
-  styleUrls: ['./editproduct.component.css']
+  styleUrls: ['./editproduct.component.scss']
 })
 export class EditproductComponent implements OnInit {
 

@@ -14,7 +14,7 @@ export interface Subject {
 @Component({
   selector: 'app-addproducts',
   templateUrl: './addproducts.component.html',
-  styleUrls: ['./addproducts.component.css']
+  styleUrls: ['./addproducts.component.scss']
 })
 export class AddproductsComponent implements OnInit {
   product: IProduct = {

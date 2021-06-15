@@ -15,6 +15,7 @@ import { UpdatephotoComponent } from './updatephoto/updatephoto.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { EditproductComponent } from "./editproduct/editproduct.component";
+import { UserBadgeComponent } from './user-badge/user-badge.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditproductComponent } from "./editproduct/editproduct.component";
     UpdatephotoComponent,
     UploaderComponent,
     WidgetsComponent,
-    EditproductComponent
+    EditproductComponent,
+    UserBadgeComponent
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,10 @@
   "projects": {
     "Angular10JwtAuth": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component":
+        { "style": "scss" }
+        } ,
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -25,7 +28,7 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                "node_modules/ngx-toastr/toastr.css",
-               "src/styles.css"
+               "src/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -128,6 +131,11 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
     }
   },
   "defaultProject": "Angular10JwtAuth"

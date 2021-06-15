@@ -5,7 +5,7 @@ import { ProductService } from 'src/app/_services/product/product.service';
 @Component({
   selector: 'app-updatephoto',
   templateUrl: './updatephoto.component.html',
-  styleUrls: ['./updatephoto.component.css']
+  styleUrls: ['./updatephoto.component.scss']
 })
 export class UpdatephotoComponent implements OnInit {
 
