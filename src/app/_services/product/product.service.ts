@@ -23,7 +23,7 @@ export class ProductService {
 
   updateProduct(id,product):Observable<IApiResponse>{
      let _product={...product};
-    return this.httpClient.put(`${environment.baseUri}/products${id}`,_product) as Observable<IApiResponse>;
+    return this.httpClient.put(`${environment.baseUri}/products/${id}`,_product) as Observable<IApiResponse>;
   }
 
   getAllProducts(){
@@ -31,6 +31,6 @@ export class ProductService {
   }
 
   getProductById(id){
-    return this.httpClient.get(`${environment.baseUri}/products${id}`) as Observable<any>;
+    return this.httpClient.get(`${environment.baseUri}/products/${id}`) as Observable<any>;
   }
 }

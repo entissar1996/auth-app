@@ -40,7 +40,7 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
           <button mat-raised-button color="primary" (click)="uploadPhoto(element?._id)">Upload Photo</button>
-          <button  mat-button color="accent">Update Product</button>
+          <button  mat-button color="accent" [routerLink]="['/editproduct/', element._id]">Update Product</button>
           <button  mat-button color="warn">Delete</button>
         </td>
       </ng-container>

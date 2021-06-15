@@ -21,6 +21,7 @@ import { SidebarComponent } from "./admin/sidebar/sidebar.component";
 import { UpdatephotoComponent } from './admin/updatephoto/updatephoto.component';
 import { UploaderComponent } from './admin/uploader/uploader.component';
 import { WidgetsComponent } from './admin/widgets/widgets.component';
+import { EditproductComponent } from './admin/editproduct/editproduct.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'upload', component:UploaderComponent  },
   { path: 'dashbord', component:WidgetsComponent  },
 
+  { path: 'editproduct/:id', component:EditproductComponent  },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -14,7 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { UpdatephotoComponent } from './updatephoto/updatephoto.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { WidgetsComponent } from './widgets/widgets.component';
-
+import { EditproductComponent } from "./editproduct/editproduct.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { WidgetsComponent } from './widgets/widgets.component';
     UpdatephotoComponent,
     UploaderComponent,
     WidgetsComponent,
+    EditproductComponent
   ],
   imports: [
     CommonModule,

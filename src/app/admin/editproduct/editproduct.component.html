@@ -1,0 +1,32 @@
+<app-sidebar></app-sidebar>
+<!-- Form -->
+<div class="inner-wrapper">
+  <form [formGroup]="productForm" (ngSubmit)="updateproductForm()" #resetStudentForm="ngForm" novalidate>
+    <mat-card>
+      <div class="controlers-wrapper">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="label" formControlName="label">
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="description" formControlName="description">
+
+        </mat-form-field>
+
+        <!-- Section -->
+
+      </div>
+    </mat-card>
+
+    <!-- Submit & Reset -->
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Update</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>
+
