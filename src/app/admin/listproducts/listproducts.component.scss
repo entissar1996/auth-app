@@ -11,15 +11,16 @@ mat-table{
 
 ng-container{
   width: 15%;
-  padding: 1em;
   margin:3px;
 }
 
 td{
   padding:2px;
+  width: 17%;
 }
 
 th{
   padding:3px;
 }
-.container{margin-top:    14%;}
+.container{margin-top:    14%;
+margin-left: 10%;}

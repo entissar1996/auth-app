@@ -16,7 +16,7 @@ export class ProductService {
     return this.httpClient.post(`${environment.baseUri}/products`,product) as Observable<IApiResponse>;
   }
   deleteProduct(id){
-    return this.httpClient.delete(`${environment.baseUri}/products${id}`) as Observable<IApiResponse>;;
+    return this.httpClient.delete(`${environment.baseUri}/products/${id}`) as Observable<IApiResponse>;;
   }
 
 

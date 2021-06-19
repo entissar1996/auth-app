@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterLink, RouterModule } from '@angular/router';
 import { MaterialModule } from './../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ConfirmationDialogComponent
 
   ],
   imports: [

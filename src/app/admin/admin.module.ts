@@ -16,6 +16,7 @@ import { UploaderComponent } from './uploader/uploader.component';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { EditproductComponent } from "./editproduct/editproduct.component";
 import { UserBadgeComponent } from './user-badge/user-badge.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserBadgeComponent } from './user-badge/user-badge.component';
     UploaderComponent,
     WidgetsComponent,
     EditproductComponent,
-    UserBadgeComponent
+    UserBadgeComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,

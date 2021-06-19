@@ -3,6 +3,7 @@ import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IProduct } from 'src/app/_models/products.model';
 import { ProductService } from 'src/app/_services/product/product.service';
 
 @Component({
@@ -11,70 +12,79 @@ import { ProductService } from 'src/app/_services/product/product.service';
   styleUrls: ['./editproduct.component.scss']
 })
 export class EditproductComponent implements OnInit {
-
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  @ViewChild('chipList', { static: true }) chipList;
-  @ViewChild('resetStudentForm', { static: true }) myNgForm;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  productForm: FormGroup;
-
-  ngOnInit() {
-    this.updateProductForm();
-  }
+  submitted = false;
+  editForm: FormGroup;
+  producteData: IProduct[];
+  producteProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
 
   constructor(
     public fb: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone,
     private actRoute: ActivatedRoute,
-    private studentApi: ProductService
-  ) {
-    var id = this.actRoute.snapshot.paramMap.get('id');
-    this.studentApi.getProductById(id).subscribe(data => {
-      this.productForm = this.fb.group({
-        label: [data.label, [Validators.required]],
-        description: [data.description, [Validators.required]],
+    private ProductService: ProductService,
+    private router: Router
+  ) {}
 
-      })
-    })
-  }
-
-  updateProductForm() {
-    this.productForm = this.fb.group({
+  ngOnInit() {
+    this.updateproduct();
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.getproduct(id);
+    this.editForm = this.fb.group({
       label: ['', [Validators.required]],
-      description: ['', [Validators.required]]
-
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      quantity: ['', [Validators.required]]
     })
   }
 
-
-
-
-
-  /* Date */
-  formatDate(e) {
-    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.productForm.get('dob').setValue(convertDate, {
-      onlyself: true
+  // Choose options with select-dropdown
+  updateProfile(e) {
+    this.editForm.get('description').setValue(e, {
+      onlySelf: true
     })
   }
 
-  /* Get errors */
-  public handleError = (controlName: string, errorName: string) => {
-    return this.productForm.controls[controlName].hasError(errorName);
+  // Getter to access form control
+  get myForm() {
+    return this.editForm.controls;
   }
 
-  /* Update book */
-  updateproductForm() {
-    console.log(this.productForm.value)
-    var id = this.actRoute.snapshot.paramMap.get('id');
-    if (window.confirm('Are you sure you want to update?')) {
-      this.studentApi.updateProduct(id, this.productForm.value).subscribe( res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/listproduct'))
+  getproduct(id) {
+    this.ProductService.getProductById(id).subscribe(data => {
+      this.editForm.setValue({
+        label: data['label'],
+        description: data['description'],
+        price: data['price'],
+        quantity: data['quantity'],
       });
+    });
+  }
+
+  updateproduct() {
+    this.editForm = this.fb.group({
+      label: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      quantity: ['', [Validators.required]]
+    })
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (!this.editForm.valid) {
+      return false;
+    } else {
+      if (window.confirm('Are you sure?')) {
+        let id = this.actRoute.snapshot.paramMap.get('id');
+        this.ProductService.updateProduct(id, this.editForm.value)
+          .subscribe(res => {
+            this.router.navigateByUrl('/listproduct');
+            console.log('Content updated successfully!')
+          }, (error) => {
+            console.log(error)
+          })
+      }
     }
   }
+
 }
+

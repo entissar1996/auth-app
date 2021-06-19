@@ -3,6 +3,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { ConfirmationDialogComponent } from 'src/app/admin/confirmation-dialog/confirmation-dialog.component';
+import { IApiResponse } from 'src/app/_models/api-response.model';
 import { IProduct } from 'src/app/_models/products.model';
 import { ProductService } from 'src/app/_services/product/product.service';
 import { environment } from 'src/environments/environment';
@@ -16,7 +19,7 @@ import { UploaderComponent } from '../uploader/uploader.component';
 })
 export class ListproductsComponent implements OnInit {
 
-  StudentData: any = [];
+  ProductData: any = [];
   dataSource: MatTableDataSource<IProduct>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = [
@@ -25,13 +28,14 @@ export class ListproductsComponent implements OnInit {
     'photo','actions'];
 
   constructor(
-    private studentApi: ProductService,
+    private router: Router,
+    private productApi: ProductService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     public uploadService:UploadService) {
-    this.studentApi.getAllProducts().subscribe(data => {
-      this.StudentData = data.payload;
-      this.dataSource = new MatTableDataSource<IProduct>(this.StudentData);
+    this.productApi.getAllProducts().subscribe(data => {
+      this.ProductData = data.payload;
+      this.dataSource = new MatTableDataSource<IProduct>(this.ProductData);
       console.log(this.dataSource);
 
       setTimeout(() => {
@@ -47,9 +51,32 @@ export class ListproductsComponent implements OnInit {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
-      this.studentApi.deleteProduct(e._id).subscribe()
+      this.productApi.deleteProduct(e._id).subscribe()
     }
   }
+  deleteProduct(id){
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '450px',
+      data: "Do you confirm the deletion of this User? "
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+       this.productApi.deleteProduct(id).subscribe({
+         next:(response:IApiResponse)=>{
+          this.router.navigateByUrl('/listproduct');
+
+         },
+         error:(error)=>{
+          this.router.navigateByUrl('/listproduct');
+
+         },
+         complete:()=>null
+       });
+      }
+    });
+
+}
+
 
   getUrl(url){
           return `${environment.baseUri}/uploads/${url}`;
